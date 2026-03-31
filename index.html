@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!--Titulo del dashboard -->
+    <title>Pulse Dashboard | Productivity Hub</title>
+
+    <!-- Tailwind CSS CDN - activa el estilo de tu dashboard sin necesidad de configurar un entorno de desarrollo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fuente de letra -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+   
+   <!-- Estilos personalizados -->
+   <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
-    <h1>hola mundo </h1>
+
+<!-- Cuerpo del dashboard con un diseño limpio y moderno, utilizando Tailwind CSS para estilos rápidos y responsivos -->
+<body class="bg-slate-50 text-slate-900 transition-colors duration-300">
+
+    <!-- Contenedor principal del dashboard, centrado y con padding para una mejor presentación -->
+    <main class="max-w-5xl mx-auto p-6 md:p-12">
+
+        <!-- Encabezado del dashboard con un saludo dinámico, fecha actual y un botón para cambiar el tema -->  
+        <header class="mb-10 flex justify-between items-center">
+            <div>
+                <h1 id="greeting" class="text-3xl font-bold tracking-tight text-slate-800">Cargando...</h1>
+                <p id="current-date" class="text-slate-500 mt-1 uppercase text-xs tracking-widest font-semibold"></p>
+            </div>
+            <button id="theme-toggle" class="p-2 rounded-xl bg-white shadow-sm border border-slate-200 hover:bg-slate-100 transition-all">
+                🌙
+            </button>
+        </header>
+         
+        
+        <!-- Sección principal del dashboard con un diseño de cuadrícula para organizar la información de manera clara y accesible -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+            <!-- Sección de enfoque con un temporizador Pomodoro, diseñada para ayudar a los usuarios a mantenerse concentrados y productivos, con un diseño atractivo y fácil de usar -->
+            <section class="bg-indigo-600 text-white p-8 rounded-3xl shadow-lg flex flex-col items-center justify-center text-center">
+                <h2 class="text-indigo-100 text-sm font-medium mb-4 uppercase tracking-wider">Enfoque</h2>
+                <div id="timer-display" class="text-5xl font-mono font-bold mb-6">25:00</div>
+                <button id="timer-btn" class="bg-white text-indigo-600 px-8 py-2 rounded-full font-bold hover:scale-105 transition-transform active:scale-95">
+                    INICIAR
+                </button>
+            </section>
+
+             <!-- Sección de clima local con información dinámica y un ícono representativo, diseñada para ser visualmente atractiva y fácil de leer -->
+            <section class="md:col-span-2 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex items-center justify-between">
+                <div id="weather-info">
+                    <h2 class="text-slate-400 text-sm font-medium mb-1">Clima Local</h2>
+                    <p id="temp" class="text-5xl font-bold text-indigo-600">--°C</p>
+                    <p id="city" class="text-slate-600 font-medium italic"></p>
+                </div>
+                <div id="weather-icon" class="text-6xl">☁️</div>
+            </section>
+
+            <!-- Sección de inspiración con una cita motivacional, diseñada para proporcionar a los usuarios un impulso de motivación y positividad, con un diseño atractivo y fácil de leer -->
+            <section class="md:col-span-2 bg-slate-900 text-slate-300 p-6 rounded-3xl flex items-center justify-center italic text-center">
+                "El código limpio siempre parece que fue escrito por alguien a quien le importa." — Michael Feathers
+            </section>
+
+            <!-- Sección de acceso rápido con enlaces a plataformas populares como GitHub y LinkedIn, diseñada para proporcionar a los usuarios un acceso fácil y rápido a sus recursos más utilizados, con un diseño limpio y moderno -->
+            <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-slate-800 font-bold mb-4">Acceso Rápido</h2>
+                <nav class="flex flex-col gap-3">
+                    <a href="https://github.com" target="_blank" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all">
+                        <span class="bg-slate-100 p-2 rounded-lg text-lg">📁</span> GitHub
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all">
+                        <span class="bg-blue-50 p-2 rounded-lg text-lg">💼</span> LinkedIn
+                    </a>
+                </nav>
+            </section> 
+
+        </div> 
+    </main>
+
+    <script src="src/js/main.js"></script>
 </body>
 </html>

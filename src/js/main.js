@@ -12,9 +12,9 @@ function initDashboard() {
     
     // 1. Saludo Dinámico
     let message = "";
-    if (hours >= 5 && hours < 12) message = "¡Buenos días! ☕";
-    else if (hours >= 12 && hours < 18) message = "¡Buenas tardes! 🚀";
-    else message = "¡Buenas noches! 🌙";
+    if (hours >= 5 && hours < 12) message = "¡Buenos días Lider! ☕";
+    else if (hours >= 12 && hours < 18) message = "¡Buenas tardes Lider! 🚀";
+    else message = "¡Buenas noches Lider! 🌙";
 
     // Mostrar el saludo en el dashboard
     greetingElement.innerText = message;

@@ -1,18 +1,18 @@
 async function initWeather() {
-    const API_KEY = 'TU_LLAVE_AQUÍ'; 
+    const API_KEY = '17ea2551131285e1435bb476898f6d79'; 
     const CITY = 'Ibague,CO';
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=metric&lang=es&appid=${API_KEY}`;
 
     const tempElement = document.getElementById('temp');
     const cityElement = document.getElementById('city');
+    // Capturamos el elemento donde está el emoji (asegúrate que tenga este ID en el HTML)
+    const iconElement = document.getElementById('weather-icon');
 
     try {
-        // Mostramos un estado de "Cargando"
         cityElement.innerText = "Actualizando clima...";
         
         const response = await fetch(URL);
         
-        // Si la llave no se ha activado, entrará aquí (Error 401)
         if (response.status === 401) {
             throw new Error('La API Key aún se está activando (espera 30 min)');
         }
@@ -21,14 +21,36 @@ async function initWeather() {
 
         const data = await response.json();
 
-        // ÉXITO: Pintamos los datos
+        // --- INICIO DE LA LÓGICA DE ICONOS ---
+        const weatherIcons = {
+            "Clear": "☀️",
+            "Clouds": "☁️",
+            "Rain": "🌧️",
+            "Drizzle": "🌦️",
+            "Thunderstorm": "⚡",
+            "Snow": "❄️",
+            "Mist": "🌫️",
+            "Smoke": "🌫️",
+            "Haze": "🌫️"
+        };
+
+        const mainStatus = data.weather[0].main;
+        const icon = weatherIcons[mainStatus] || "🌡️"; 
+        // --- FIN DE LA LÓGICA DE ICONOS ---
+
+        // ÉXITO: Pintamos los datos en el HTML
         tempElement.innerText = `${Math.round(data.main.temp)}°C`;
+        
         const description = data.weather[0].description;
         cityElement.innerText = `Ibagué: ${description.charAt(0).toUpperCase() + description.slice(1)}`;
+        
+        // Actualizamos el icono si el elemento existe
+        if (iconElement) {
+            iconElement.innerText = icon;
+        }
 
     } catch (error) {
         console.warn("Aviso Clima:", error.message);
-        // Si falla, ponemos un mensaje amigable en lugar de dejarlo vacío
         cityElement.innerText = "API en proceso de activación...";
         tempElement.innerText = "--°C";
     }

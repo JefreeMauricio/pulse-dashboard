@@ -8,16 +8,32 @@ Pulse Dashboard| Incluye seguimiento del clima local, un temporizador de enfoque
 ---
 
 ## ✨ Características Principales
-* 🕒 **Greeting Dinámico:** Saludo personalizado que cambia según la hora del día (Mañana/Tarde/Noche).
-* ☁️ **Weather Widget:** Integración en tiempo real con la API de OpenWeather para monitorear el clima local en Ibagué.
-* ⏱️ **Focus Timer (Pomodoro):** Herramienta de gestión de tiempo para sesiones de trabajo profundo de 25 minutos.
-* 📱 **Responsive Design:** Optimizado para dispositivos móviles y escritorio usando Tailwind CSS.
+🕒 Greeting Dinámico: Saludo personalizado que cambia automáticamente según la hora del día (Mañana, Tarde o Noche).
+
+☁️ Weather Widget: Integración en tiempo real con la API de OpenWeather para monitorear el clima local en Ibagué.
+
+⏱️ Focus Timer (Pomodoro): Herramienta de gestión de tiempo diseñada para sesiones de trabajo profundo de 25 minutos.
+
+📝 To-Do List Inteligente: Gestión de tareas diarias con persistencia de datos en localStorage, scroll interno optimizado y opción de eliminación.
+
+🌙 Dark Mode: Interfaz adaptable con soporte para modo oscuro, guardando la preferencia del usuario para futuras sesiones.
+
+📱 Responsive Design: Maquetación moderna tipo "Bento Grid" optimizada para móviles y escritorio usando Tailwind CSS.
 
 ## 🛠️ Tecnologías Utilizadas
-* **HTML5 Semántico:** Para una estructura accesible y sólida.
-* **Tailwind CSS:** Framework de utilidades para un diseño rápido y escalable.
-* **JavaScript Vanilla (ES6+):** Lógica pura sin dependencias pesadas, priorizando el rendimiento.
-* **Lucide Icons:** Iconografía moderna y ligera.
+HTML5 Semántico: Estructura accesible y sólida, optimizada para SEO y lectores de pantalla.
+
+Tailwind CSS: Diseño "Bento Grid" responsivo y escalable mediante utilidades de bajo nivel.
+
+JavaScript Vanilla (ES6+): Lógica pura sin dependencias pesadas, priorizando el rendimiento y el uso de funciones modernas.
+
+Web Storage API (localStorage): Persistencia de datos local para que tus tareas y la preferencia del tema (Dark Mode) se mantengan al recargar la página.
+
+Manipulación Dinámica del DOM: Creación, actualización y eliminación de elementos en tiempo real para una experiencia de usuario fluida.
+
+Fetch API & Asincronía: Consumo de datos externos (OpenWeather API) manejando estados de carga y errores.
+
+Lucide Icons: Iconografía moderna, ligera y coherente con el diseño visual.
 
 ## 🚀 Instalación y Uso
 1.  Clona este repositorio:

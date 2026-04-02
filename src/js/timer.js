@@ -1,4 +1,5 @@
 function initTimer() {
+    // REFERENCIAS A LOS ELEMENTOS DEL DOM
     const display = document.getElementById('timer-display');
     const btn = document.getElementById('timer-btn');
     const timeInput = document.getElementById('timer-input');
@@ -6,20 +7,24 @@ function initTimer() {
     // 1. CREAR EL OBJETO DE AUDIO
     // Puedes usar una ruta local como 'assets/alarm.mp3'
     const alarmSound = new Audio('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg');
+    alarmSound.volume = 1.0; // Ajusta el volumen si es necesario
 
+  
     if (!display || !btn || !timeInput) return;
 
+    // INICIALIZAR EL TEMPORIZADOR
     let timeLeft = parseInt(timeInput.value) * 60; 
     let timerId = null;
 
+    // FUNCION PARA ACTUALIZAR EL DISPLAY
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
         display.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    // ... (el resto de los eventos se mantienen igual)
-
+   
+    // FUNCION PARA INICIAR/PAUSAR EL TEMPORIZADOR
     function toggleTimer() {
         if (timerId) {
             clearInterval(timerId);
@@ -39,9 +44,10 @@ function initTimer() {
                 } else {
                     clearInterval(timerId);
                     
-                    // 2. REPRODUCIR EL SONIDO EN LUGAR DEL ALERT
+                    // REPRODUCIR EL SONIDO DE ALARMA CUANDO EL TEMPORIZADOR LLEGA A CERO
                     alarmSound.play(); 
-                    
+
+                    // RESETEAR EL TEMPORIZADOR
                     btn.innerText = "INICIAR";
                     timeInput.disabled = false;
                     timeLeft = parseInt(timeInput.value) * 60;

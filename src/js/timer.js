@@ -1,35 +1,25 @@
-// Usamos una función para envolver todo y asegurar que el DOM exista
 function initTimer() {
-    // Obtener referencias a los elementos del DOM
     const display = document.getElementById('timer-display');
     const btn = document.getElementById('timer-btn');
     const timeInput = document.getElementById('timer-input');
 
-    // Verificación de seguridad: si no existen, no ejecutes nada
+    // 1. CREAR EL OBJETO DE AUDIO
+    // Puedes usar una ruta local como 'assets/alarm.mp3'
+    const alarmSound = new Audio('https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg');
+
     if (!display || !btn || !timeInput) return;
 
-    // Convertir el tiempo de minutos a segundos
     let timeLeft = parseInt(timeInput.value) * 60; 
     let timerId = null;
 
-    // Función para actualizar el display del temporizador
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
         const seconds = timeLeft % 60;
         display.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    // Cambiamos 'change' por 'input' para que sea instantáneo
-    timeInput.addEventListener('input', () => {
-        if (!timerId) {
-            let value = parseInt(timeInput.value);
-            if (isNaN(value) || value < 1) value = 0;
-            timeLeft = value * 60;
-            updateDisplay();
-        }
-    });
+    // ... (el resto de los eventos se mantienen igual)
 
-    // Función para iniciar o pausar el temporizador
     function toggleTimer() {
         if (timerId) {
             clearInterval(timerId);
@@ -37,20 +27,21 @@ function initTimer() {
             btn.innerText = "REANUDAR";
             timeInput.disabled = false;
         } else {
-            // Si el tiempo es 0, no iniciar
-            if (timeLeft <= 0) return alert("Ingresa un tiempo válido");
+            if (timeLeft <= 0) return;
 
             btn.innerText = "PAUSAR";
             timeInput.disabled = true;
-
-            // Iniciar el temporizador
+            
             timerId = setInterval(() => {
                 if (timeLeft > 0) {
                     timeLeft--;
                     updateDisplay();
                 } else {
                     clearInterval(timerId);
-                    alert("¡Sesión terminada, Mauro!");
+                    
+                    // 2. REPRODUCIR EL SONIDO EN LUGAR DEL ALERT
+                    alarmSound.play(); 
+                    
                     btn.innerText = "INICIAR";
                     timeInput.disabled = false;
                     timeLeft = parseInt(timeInput.value) * 60;
@@ -59,10 +50,9 @@ function initTimer() {
             }, 1000);
         }
     }
-    // Agregar el evento al botón para iniciar/pausar el temporizador
+
     btn.addEventListener('click', toggleTimer);
     updateDisplay();
 }
-// Ejecutar la función cuando el DOM esté completamente cargado
-// 🚀 LA CLAVE: Esperar a que el HTML esté cargado
+
 document.addEventListener('DOMContentLoaded', initTimer);

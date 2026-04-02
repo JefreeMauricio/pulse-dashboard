@@ -52,19 +52,21 @@
 
 
             <!-- Sección de enfoque con un temporizador Pomodoro, diseñada para ayudar a los usuarios a mantenerse concentrados y productivos, con un diseño atractivo y fácil de usar -->
-            <section class="md:row-span-2 bg-indigo-600 text-white p-10 rounded-3xl shadow-lg flex flex-col items-center justify-between text-center min-h-[500px] dark:shadow-indigo-500/10">
-                <h2 class="text-indigo-100 text-sm font-medium mb-4 uppercase tracking-wider">Enfoque</h2>
-                <div id="timer-display" class="text-5xl font-mono font-bold mb-6">25:00</div>
-                <div>
-                <!-- Configuración del temporizador con un input numérico para establecer la duración de la sesión, diseñado para ser intuitivo y fácil de usar, con un estilo que se integra perfectamente con el diseño general del dashboard -->
-                <p class="text-indigo-100 text-xs font-bold uppercase tracking-widest mb-6">Configurar Sesión (min)</p>
-                <input type="number" id="timer-input" value="25" min="1" max="120" 
-                    class="bg-white/20 text-white text-center w-24 py-3 rounded-xl font-bold mb-8 focus:outline-none focus:ring-2 focus:ring-white text-2xl">
-                </div>
-                <button id="timer-btn" class="bg-white text-indigo-600 px-8 py-2 rounded-full font-bold hover:scale-105 transition-transform active:scale-95">
-                    INICIAR
-                </button>
-            </section>
+           <section class="md:row-span-2 self-start bg-indigo-600 text-white p-8 rounded-3xl shadow-lg flex flex-col items-center justify-evenly text-center min-h-[500px] w-full">
+            <h2 class="text-indigo-100 text-xs font-medium uppercase tracking-wider">Enfoque</h2>
+            
+            <div id="timer-display" class="text-6xl font-mono font-bold my-4">25:00</div>
+            
+            <div class="w-full px-4">
+                <p class="text-indigo-100 text-[10px] font-bold uppercase tracking-widest mb-2">Sesión (min)</p>
+                <input type="number" id="timer-input" value="25" 
+                    class="bg-white/20 text-white text-center w-20 py-2 rounded-xl font-bold focus:outline-none focus:ring-2 focus:ring-white text-xl">
+            </div>
+
+            <button id="timer-btn" class="mt-4 bg-white text-indigo-600 px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform active:scale-95 shadow-md">
+                INICIAR
+            </button>
+          </section>
 
 
             <!-- Sección de inspiración con una cita motivacional, diseñada para proporcionar a los usuarios un impulso de motivación y positividad, con un diseño atractivo y fácil de leer -->
@@ -95,24 +97,31 @@
                     </a>
                 </nav>
             </section>-->
+            
+            <!-- Sección de tareas del día con una lista dinámica de tareas, diseñada para ayudar a los usuarios a organizar su día de manera efectiva, con un diseño atractivo y fácil de usar -->
+            <section class="md:col-span-2 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 h-[290px] flex flex-col transition-all">
+    
+            <div class="flex justify-between items-center mb-6 shrink-0">
+                <h2 class="text-slate-800 dark:text-white font-bold text-xl">Tareas del Día</h2>
+                <span id="task-count" class="bg-indigo-100 text-indigo-600 text-xs font-bold px-3 py-1 rounded-full dark:bg-indigo-900 dark:text-indigo-300">0 pendientes</span>
+            </div>
 
-            <!--<section class="md:col-span-2 bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-slate-800 dark:text-white font-bold text-xl">Tareas del Día</h2>
-                    <span id="task-count" class="bg-indigo-100 text-indigo-600 text-xs font-bold px-3 py-1 rounded-full dark:bg-indigo-900 dark:text-indigo-300">0 pendientes</span>
-                </div>
+            <div class="flex gap-2 mb-6 shrink-0">
+                <input type="text" id="todo-input" placeholder="Nueva tarea..." 
+                    class="flex-1 bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 dark:text-white outline-none focus:ring-2 focus:ring-indigo-500">
+                <button id="todo-add" class="bg-indigo-600 text-white px-6 rounded-xl font-bold hover:bg-indigo-700">
+                    Añadir
+                </button>
+            </div>
 
-                <div class="flex gap-2 mb-6">
-                    <input type="text" id="todo-input" placeholder="¿Qué vamos a hacer hoy?" 
-                        class="flex-1 bg-slate-50 dark:bg-slate-900 border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 dark:text-white outline-none">
-                    <button id="todo-add" class="bg-indigo-600 text-white px-6 rounded-xl font-bold hover:bg-indigo-700 transition-colors">
-                        Añadir
-                    </button>
-                </div>
-
-                <ul id="todo-list" class="space-y-3 max-h-60 overflow-y-auto pr-2">
+            <ul id="todo-list" class="space-y-3 flex-1 overflow-y-auto pr-2 custom-scrollbar">
                 </ul>
-            </section>-->
+            </section>
+
+            <!-- Pie de página con derechos de autor, diseñado para ser discreto pero informativo, con un diseño limpio y moderno -->
+            <footer class=" md:col-span-3 text-center text-slate-500 dark:text-slate-400 text-sm p- text">
+                &copy; 2026 Pulse Dashboard. Todos los derechos reservados.
+            </footer>
 
         </div> 
     </main>
@@ -120,5 +129,6 @@
     <script src="src/js/main.js"></script>
     <script src="src/js/timer.js"></script>
     <script src="src/js/wather.js"></script><script src="src/js/theme.js"></script>
+    <script src="src/js/todo.js"></script>
 </body>
 </html>
